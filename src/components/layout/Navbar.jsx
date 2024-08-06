@@ -23,7 +23,7 @@ const Navbar = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "https://blogplatform-backend.onrender.com//api/v1/user/logout",
+        "https://blogplatform-backend.onrender.com/api/v1/user/logout",
         { withCredentials: true }
       );
       setIsAuthenticated(false);
@@ -72,20 +72,7 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="btns">
-            <button
-              onClick={() =>
-                mode === "light" ? setMode("dark") : setMode("light")
-              }
-              className={
-                mode === "light" ? "mode-btn light-mode" : "mode-btn dark-mode"
-              }
-            >
-              {mode === "light" ? (
-                <CiLight className="light-icon" />
-              ) : (
-                <MdDarkMode className="dark-icon" />
-              )}
-            </button>
+            
             {isAuthenticated && user.role === "Author" ? (
               <Link
                 to={"/dashboard"}

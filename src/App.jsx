@@ -6,7 +6,6 @@ import About from "../src/components/pages/About";
 import Blogs from "../src/components/pages/Blogs";
 import SingleBlog from "../src/components/pages/SingleBlog";
 import Navbar from "../src/components/layout/Navbar";
-import Footer from "../src/components/layout/Footer";
 import { Toaster } from "react-hot-toast";
 import Dashboard from "./components/pages/Dashboard";
 import Register from "./components/pages/Register";
@@ -23,7 +22,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const { data } = await axios.get(
-          "https://blogplatform-backend.onrender.com//api/v1/user/myprofile",
+          "https://blogplatform-backend.onrender.com/api/v1/user/myprofile",
           {
             withCredentials: true,
           }
@@ -39,7 +38,7 @@ const App = () => {
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "https://blogplatform-backend.onrender.com//api/v1/blog/all",
+          "https://blogplatform-backend.onrender.com/api/v1/blog/all",
           { withCredentials: true }
         );
         setBlogs(data.allBlogs);
@@ -65,7 +64,6 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/blog/update/:id" element={<UpdateBlog />} />
         </Routes>
-        <Footer />
         <Toaster />
       </BrowserRouter>
     </>

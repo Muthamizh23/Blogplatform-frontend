@@ -17,7 +17,7 @@ const SideBar = ({ setComponent }) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "https://blogplatform-backend.onrender.com//api/v1/user/logout",
+        "https://blogplatform-backend.onrender.com/api/v1/user/logout",
         { withCredentials: true }
       );
       setIsAuthenticated(false);
