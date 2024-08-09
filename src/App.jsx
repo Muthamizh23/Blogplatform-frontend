@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect ,useRef} from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../src/components/pages/Home";
@@ -16,9 +16,13 @@ import axios from "axios";
 import UpdateBlog from "./components/pages/UpdateBlog";
 
 const App = () => {
+  const initialized = useRef(false);
+
   const { setUser, isAuthenticated, setIsAuthenticated, user, setBlogs } =
     useContext(Context);
   useEffect(() => {
+    if (!initialized.current) {
+      initialized.current = true;
     const fetchUser = async () => {
       try {
         const { data } = await axios.get(
@@ -48,6 +52,7 @@ const App = () => {
     };
     fetchUser();
     fetchBlogs();
+  }
   }, [isAuthenticated, user]);
   return (
     <>
